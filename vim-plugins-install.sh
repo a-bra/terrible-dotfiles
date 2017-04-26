@@ -6,6 +6,8 @@ git clone git://github.com/airblade/vim-gitgutter.git
 git clone git://github.com/vim-airline/vim-airline.git
 git clone git://github.com/vim-airline/vim-airline-themes.git
 git clone git://github.com/tpope/vim-fugitive.git
+git clone git://github.com/gregsexton/gitv.git
+git clone https://github.com/ctrlpvim/ctrlp.vim.git
 vim -u NONE -c "helptags vim-fugitive/doc" -c q
 # copy custom jellybean theme
 cd -
