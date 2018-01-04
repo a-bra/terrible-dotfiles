@@ -2,8 +2,8 @@
 # ~/.bashrc
 #
 
-source ~/.git-completion.sh
-source ~/.git-prompt.sh
+source /usr/share/git/completion/git-completion.bash
+source /usr/share/git/completion/git-prompt.sh
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
