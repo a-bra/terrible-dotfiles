@@ -8,8 +8,6 @@ source /usr/share/git/completion/git-prompt.sh
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-
 temp=$(tty)
 GRAD1=${temp:5}
 RED='\033[32m'
