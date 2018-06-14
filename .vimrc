@@ -14,12 +14,14 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 " Plug 'https://github.com/gregsexton/gitv.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 " filetype indent plugin on
+call plug#end()
 set noet ci pi sts=0 sw=2 ts=2
 set autoindent
 let g:airline_powerline_fonts=1
 let g:airline_theme='jellybeans'
 set laststatus=2
 set updatetime=400
+set incsearch
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 omap ih <Plug>GitGutterTextObjectInnerPending
