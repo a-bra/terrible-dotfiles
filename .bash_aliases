@@ -1,3 +1,4 @@
+# Git aliases
 alias g='git status'
 alias gp='git pull'
 alias gf='git fetch'
@@ -17,3 +18,6 @@ alias gsl='git stash list'
 alias gss='git stash save'
 alias gco='git checkout'
 alias gcb='git checkout -b'
+
+# kubernetes aliases
+alias k='kubectl'

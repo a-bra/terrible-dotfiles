@@ -4,6 +4,7 @@
 
 source /usr/share/git/completion/git-completion.bash
 source /usr/share/git/completion/git-prompt.sh
+source ~/.bash_aliases
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -24,3 +25,12 @@ setxkbmap -option caps:swapescape
 PS1='\t [\[\033[32m\]\u\[\033[0m\]@\[\033[36m\]\h\[\033[0m\]($GRAD1) \W]\[\033[35m\]$(__git_ps1 " (%s)") `if [ $? = 0 ]; then echo \[\033[32m\]𝛌\[\033[0m\]; else echo \[\033[31m\]𝛌\[\033[0m\]; fi` \[\033[0m\]'
 
 eval $(keychain --eval --quiet)
+
+export PATH=~/.local/bin:$PATH
+export KUBECONFIG=~/.kube/config-kubernetes-production-eu-west-1
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/shadow/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/home/shadow/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/shadow/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/home/shadow/Downloads/google-cloud-sdk/completion.bash.inc'; fi
