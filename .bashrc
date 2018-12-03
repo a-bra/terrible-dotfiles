@@ -5,7 +5,7 @@
 source /usr/share/git/completion/git-completion.bash
 source /usr/share/git/completion/git-prompt.sh
 source ~/.bash_aliases
-source < (kubectl completion bash | sed s/kubectl/k/g)
+source <(kubectl completion bash | sed s/kubectl/k/g)
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
