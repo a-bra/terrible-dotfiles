@@ -5,6 +5,7 @@ set relativenumber
 set noet ci pi sts=0 sw=2 ts=2
 set autoindent
 set incsearch
+colorscheme tokyo-metro
 
 "Install vim-plug if not present
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -41,7 +42,7 @@ xmap ih <Plug>GitGutterTextObjectInnerVisual
 xmap ah <Plug>GitGutterTextObjectOuterVisual
 
 "Full text search remap
-nnoremap <silent> <Leader>ag :Ag
+nnoremap <silent> <Leader>ag :Ag 
 xnoremap <silent> <Leader>ag y:Ag <C-R>"<CR>
 
 "SLIMV configs
