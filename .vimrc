@@ -53,7 +53,4 @@ xnoremap <silent> <Leader>ag y:Ag <C-R>"<CR>
 "ALE configs
 let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-\   'cloudformation': ['cfn_python_lint'],
-\}
+au BufRead,BufNewFile *.template.yaml set ft=cloudformation.yaml
