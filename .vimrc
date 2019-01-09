@@ -49,3 +49,11 @@ xnoremap <silent> <Leader>ag y:Ag <C-R>"<CR>
 "let g:slimv_lisp='/usr/bin/scheme'
 "let g:scheme_builtin_swank='true'
 "let g:slimv_swank_cmd="! screen -X eval 'title swank' 'screen scheme --eval \"(let loop () (start-swank) (loop))\"' 'select swank' &"
+"
+"ALE configs
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+\   'cloudformation': ['cfn_python_lint'],
+\}
