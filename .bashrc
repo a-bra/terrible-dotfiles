@@ -29,6 +29,7 @@ eval $(keychain --eval --quiet)
 
 export PATH=~/.local/bin:$PATH
 export KUBECONFIG=~/.kube/config-kubernetes-production-eu-west-1
+export KUBE_EDITOR=vim
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/shadow/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/home/shadow/Downloads/google-cloud-sdk/path.bash.inc'; fi
