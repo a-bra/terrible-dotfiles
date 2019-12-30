@@ -25,6 +25,7 @@ Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
+Plug 'jremmen/vim-ripgrep'
 call plug#end()
 
 "Airline settings
@@ -34,16 +35,16 @@ set laststatus=2
 set updatetime=250
 
 "GitGutter remaps
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 omap ih <Plug>GitGutterTextObjectInnerPending
 omap ah <Plug>GitGutterTextObjectOuterPending
 xmap ih <Plug>GitGutterTextObjectInnerVisual
 xmap ah <Plug>GitGutterTextObjectOuterVisual
 
 "Full text search remap
-nnoremap <silent> <Leader>ag :Ag 
-xnoremap <silent> <Leader>ag y:Ag <C-R>"<CR>
+nnoremap <silent> <Leader>rg :Rg 
+xnoremap <silent> <Leader>rg y:Rg <C-R>"<CR>
 
 "SLIMV configs
 "let g:slimv_impl='mit'
