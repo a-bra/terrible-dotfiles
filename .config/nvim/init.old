@@ -1,0 +1,144 @@
+"Various generic vim settings
+set nocompatible
+set number
+set relativenumber
+set noet ci pi sts=0 sw=2 ts=2
+set autoindent
+set incsearch
+set mouse=
+set splitkeep=screen
+colorscheme tokyo-metro
+
+"Install vim-plug if not present
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+"
+"ALE configs
+let g:ale_sign_column_always = 1
+let g:ale_completion_enabled = 1
+let g:ale_linters = { 'rust': ['analyzer'],
+  \ 'ruby': ['solargraph'],
+  \ 'python': ['flake8'], 
+  \ }
+let g:ale_rust_analyzer_config = {
+			\ 'checkOnSave': {
+				\ 'command': 'clippy',
+				\ 'enable': v:true
+				\ },
+			\ 'inlayHints': {
+        \ 'typeHints': v:true,
+				\ 'parameterHints': v:true
+				\ }
+			\ }
+let g:ale_python_flake8_options = '--max-line-length=120'
+let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_fixers = { 'rust': ['rustfmt', 'remove_trailing_lines'],
+  \ 'python': ['black'],
+  \ 'ruby': ['rubocop'],
+	\ }
+let g:ale_ruby_solargraph_executable = 'solargraph'
+let g:ale_ruby_solargraph_options = {}
+
+set completeopt=menu,menuone,preview,noselect,noinsert
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+
+"Duh, plugins
+call plug#begin('~/.vim/plugged')
+Plug 'https://github.com/airblade/vim-gitgutter.git'
+Plug 'https://github.com/vim-airline/vim-airline.git'
+Plug 'https://github.com/vim-airline/vim-airline-themes.git'
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/tpope/vim-commentary.git'
+" Plug 'https://github.com/gregsexton/gitv.git'
+Plug 'davidhalter/jedi-vim'
+Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+Plug 'dense-analysis/ale'
+Plug 'rust-lang/rust.vim'
+Plug 'jremmen/vim-ripgrep'
+Plug 'hashivim/vim-terraform'
+Plug 'vim-ruby/vim-ruby'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'https://github.com/neovim/nvim-lspconfig'
+call plug#end()
+
+"Airline settings
+let g:airline_powerline_fonts=1
+let g:airline_theme='jellybeans'
+set laststatus=2
+set updatetime=250
+
+"GitGutter remaps
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+omap ih <Plug>GitGutterTextObjectInnerPending
+omap ah <Plug>GitGutterTextObjectOuterPending
+xmap ih <Plug>GitGutterTextObjectInnerVisual
+xmap ah <Plug>GitGutterTextObjectOuterVisual
+
+"Full text search remap
+nnoremap <silent> <Leader>rg :Rg 
+xnoremap <silent> <Leader>rg y:Rg <C-R>"<CR>
+
+"SLIMV configs
+"let g:slimv_impl='mit'
+"let g:slimv_lisp='/usr/bin/scheme'
+"let g:scheme_builtin_swank='true'
+"let g:slimv_swank_cmd="! screen -X eval 'title swank' 'screen scheme --eval \"(let loop () (start-swank) (loop))\"' 'select swank' &"
+"
+let g:airline#extensions#ale#enabled = 1
+" autocmd BufRead,BufNewFile *.template.yaml set ft=cloudformation.yaml
+" autocmd BufNewFile,BufRead *.tf set syntax=tf
+
+
+let g:jedi#use_tabs_not_buffers = 1
+
+lua <<EOF
+local util = require 'lspconfig.util'
+
+return {
+  default_config = {
+    cmd = { 'gh-actions-language-server', '--stdio' },
+    filetypes = { 'yaml.github' },
+    root_dir = util.root_pattern('.github'),
+    single_file_support = true,
+    capabilities = {
+      workspace = {
+        didChangeWorkspaceFolders = {
+          dynamicRegistration = true,
+        },
+      },
+    },
+  },
+  docs = {
+    description = [[
+https://github.com/lttb/gh-actions-language-server
+
+Language server for GitHub Actions.
+
+The server is registered for the special `yaml.github` filetype. You need to configure this filetype pattern for GitHub workflow files.
+
+```lua
+vim.filetype.add({
+  pattern = {
+    ['.*/%.github[%w/]+workflows[%w/]+.*%.ya?ml'] = 'yaml.github',
+  },
+})
+```
+
+`gh-actions-language-server` can be installed via `npm`:
+
+```sh
+npm install -g gh-actions-language-server
+```
+]],
+  },
+}
+EOF
+
+lua vim.lsp.enable('gha-lsp')

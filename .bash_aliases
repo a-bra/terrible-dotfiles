@@ -20,6 +20,10 @@ alias gss='git stash save'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias grom='git rebase origin/master'
+alias SPACE='du -h -d1 | sort -h'
 
 # kubernetes aliases
 alias k='kubectl'
+
+# other aliases
+alias cdev='cd ~/dev'

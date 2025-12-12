@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "List_recent_entries",
+      "mcp__private-journal__process_thoughts",
+      "mcp__private-journal__search_journal",
+      "mcp__private-journal__read_journal_entry",
+      "mcp__private-journal__list_recent_entries"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enabledPlugins": {
+    "episodic-memory@superpowers-marketplace": true
+  },
+  "alwaysThinkingEnabled": true
+}

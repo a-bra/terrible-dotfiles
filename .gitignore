@@ -1,0 +1,12 @@
+.claude/debug
+.claude/downloads
+.claude/file-history
+.claude/.credentials.json
+.claude/plans
+.claude/plugins
+.claude/projects
+.claude/session-env
+.claude/shell-snapshots
+.claude/statsig
+.claude/todos
+history.jsonl
